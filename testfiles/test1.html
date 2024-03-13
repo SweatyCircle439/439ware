@@ -1,0 +1,12 @@
+<head>
+    <script src="https://benedinas.benedictus.nu/quint/libraries/qtoplibrarie.js"></script>
+</head>
+<script>
+    async function getkey(){
+        alert("waiting for\n\"key.pass\"");
+        const key = await qtop.getText("key.pass");
+        alert(key);
+        console.log(key);
+    }
+    getkey();
+</script>
