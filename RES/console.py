@@ -3,6 +3,10 @@ import tkinter as tk
 import threading
 
 class Console(cmd2.Cmd):
+    def run(self):
+            while True:
+                user_input = input(">>")
+                self.onecmd_plus_hooks(user_input)
     def __init__(self):
         super().__init__()
         self.tk_root = tk.Tk()
@@ -10,10 +14,6 @@ class Console(cmd2.Cmd):
         self.tk_root.geometry("800x600")
         self.text_area = tk.Text(self.tk_root)
         self.text_area.pack(expand=True, fill=tk.BOTH)
-        def run(self):
-            while True:
-                user_input = input(">>")
-                self.onecmd_plus_hooks(user_input)
 
         mainthread = threading.Thread(target=self.run)
         mainthread.start()
