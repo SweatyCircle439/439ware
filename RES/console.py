@@ -1,15 +1,23 @@
 import cmd2
 import tkinter as tk
+import threading
 
 class Console(cmd2.Cmd):
     def __init__(self):
         super().__init__()
-        self.intro = "Welcome to the Python Console. Type 'quit' to exit."
         self.tk_root = tk.Tk()
         self.tk_root.title("Python Console")
         self.tk_root.geometry("800x600")
         self.text_area = tk.Text(self.tk_root)
         self.text_area.pack(expand=True, fill=tk.BOTH)
+        def run(){
+            while True:
+                user_input = input(">>")
+                self.onecmd_plus_hooks(user_input)
+        }
+
+        mainthread = threading.Thread(target=self.run)
+        mainthread.start()
 
     def do_quit(self, args):
         """Quit the console."""
