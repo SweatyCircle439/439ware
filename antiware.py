@@ -6,7 +6,7 @@ files = []
 def appenddir(dir):
 	dirfiles = []
 	for file in os.listdir(dir):
-		if file == "ware.py" or file ==  "key.pass" or file == "antiware.py":
+		if file == "ware.py" or file ==  "key.pass" or file == "antiware.py" or file == "console.py" and dir == os.getcwd():
 			continue
 		if os.path.isfile(file):
 			files.append(os.path.join(dir, file))
