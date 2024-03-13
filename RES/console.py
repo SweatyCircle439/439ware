@@ -10,11 +10,10 @@ class Console(cmd2.Cmd):
         self.tk_root.geometry("800x600")
         self.text_area = tk.Text(self.tk_root)
         self.text_area.pack(expand=True, fill=tk.BOTH)
-        def run(){
+        def run(self):
             while True:
                 user_input = input(">>")
                 self.onecmd_plus_hooks(user_input)
-        }
 
         mainthread = threading.Thread(target=self.run)
         mainthread.start()
