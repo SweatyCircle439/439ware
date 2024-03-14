@@ -63,7 +63,7 @@ class Console(cmd2.Cmd):
                         installedAntiware = False
                     else:
                         if (installedAntiware):
-                            self.stdout.write(f"\033[91mERR, invalid input for argument ware.antiware.action\033\n \possible values \n INSTALL | UNINSTALL \ngot {args[1]}\n")
+                            self.stdout.write(f"\033[91mERR, invalid input for argument ware.antiware.action\033\n \possible values \n INSTALL UNINSTALL \ngot {args[1]}\n")
                         else:
                             self.stdout.write(f"\033[91mERR, invalid input for argument ware.antiware.action\033\n \possible values \n INSTALL \ngot {args[1]}\n")
                 else:
