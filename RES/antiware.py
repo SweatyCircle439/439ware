@@ -22,7 +22,7 @@ print(files)
 
 if ("-key" in args and len(args) >= args.index("-key") + 1 and args[0] == "decrypt"):
     key = args[args.index("-key") + 1].replace("\\n", "\n")
-else:
+elif (args[0] == "decrypt"):
     key = input("please enter the decryption key\n") + "\n" + input("")
 
 
