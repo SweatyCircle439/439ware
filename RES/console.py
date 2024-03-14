@@ -48,7 +48,14 @@ class Console(cmd2.Cmd):
             if start_index != -1 and end_index != -1:
                 print(f"-------------\nantiware\n-------------\n{content[start_index:end_index].strip()}\n\n\n")
         except:
-            a = 1
+            with open("antiware.py", 'r') as file:
+                content = file.read()
+
+            start_index = content.find('"""') + 3
+            end_index = content.find('"""', start_index)
+
+            if start_index != -1 and end_index != -1:
+                print(f"-------------\nantiware\n-------------\n{content[start_index:end_index].strip()}\n\n\n")
 
     def do_ware(self, args):
         """run ware / obtain ware resources"""
