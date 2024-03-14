@@ -72,7 +72,7 @@ class Console(cmd2.Cmd):
                     content = str(content)
                     start = content.find("<version>") + len("<version>")
                     end = content.find("</version>")
-                    print("-------------\nantiware\n-------------\n" + content[start:end] + "\n-------------\n")
+                    print("-------------\nware\n-------------\n" + content[start:end] + "\n-------------\n")
             except:
                 a = 1
         else: 
@@ -92,7 +92,7 @@ class Console(cmd2.Cmd):
                     content = str(content)
                     start = content.find("<version>") + len("<version>")
                     end = content.find("</version>")
-                    print("-------------\nantiware\n-------------\n" + content[start:end] + "\n-------------\n")
+                    print("-------------\nware\n-------------\n" + content[start:end] + "\n-------------\n")
             except:
                 a = 1
 
