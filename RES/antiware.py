@@ -1,7 +1,11 @@
 import os
 import random
+import sys
 
 files = []
+
+args = sys.argv[1:]  # Exclude the first argument which is the script name
+print("Arguments received:", args)
 
 def appenddir(dir):
 	dirfiles = []

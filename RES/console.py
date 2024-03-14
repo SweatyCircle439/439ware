@@ -83,7 +83,7 @@ class Console(cmd2.Cmd):
         """run antiware"""
         global installedAntiware
         if installedAntiware: 
-            os.system("antiware.py")
+            os.system(f"antiware.py {args}")
         else:
             self.stdout.write(f"\033[91mERR, antiware not installed\033\n")
         pass
