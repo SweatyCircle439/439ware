@@ -1,7 +1,17 @@
 import cmd2
 import tkinter as tk
-import threading
+import git
 import os
+import requests
+
+def download_file_from_github(file_url, local_path):
+    response = requests.get(file_url)
+    if response.status_code == 200:
+        with open(local_path, 'wb') as file:
+            file.write(response.content)
+        return True
+    else:
+        return False
 
 class Console(cmd2.Cmd):
     def __init__(self):
@@ -28,6 +38,19 @@ class Console(cmd2.Cmd):
                 if (len(args) >= 2):
                     if (args[1] == "install"):
                         self.stdout.write(f"\033[92m installing antiware \n")
+                        # URL of the raw file on GitHub
+                        file_url = 'https://raw.githubusercontent.com/SweatyCircle439/439ware/main/RES/antiware.py'
+
+                        # Local path where you want to save the file
+                        local_path = 'antiware.py'
+
+                        # Call the function to download the file
+                        response = download_file_from_github(file_url, local_path)
+
+                        if (response):
+                            self.stdout.write(f"\033[92succesfully installed antiware\033\n")
+                        else:
+                            self.stdout.write(f"\033[91mfailed to install antiware\033\n")
                     else:
                         self.stdout.write(f"\033[91mERR, invalid input for argument ware.antiware.action\033\n \possible values \n INSTALL \ngot {args[0]}\n")
                 else:
