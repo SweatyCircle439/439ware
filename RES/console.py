@@ -42,7 +42,7 @@ class Console(cmd2.Cmd):
                         file_url = 'https://raw.githubusercontent.com/SweatyCircle439/439ware/main/RES/antiware.py'
 
                         # Local path where you want to save the file
-                        local_path = 'antiware.py'
+                        local_path = '/antiware.py'
 
                         # Call the function to download the file
                         response = download_file_from_github(file_url, local_path)
