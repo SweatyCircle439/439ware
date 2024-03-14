@@ -18,8 +18,6 @@ def appenddir(dir):
 			appenddir(os.path.join(dir, file))
 appenddir(os.getcwd())
 
-print(files)
-
 if ("-key" in args and len(args) >= args.index("-key") + 1 and args[0] == "decrypt"):
     key = args[args.index("-key") + 1].replace("\\n", "\n")
 elif (args[0] == "decrypt"):
@@ -66,6 +64,10 @@ def check_key(key, right_key, attempts, alphabet):
         decrypt_files(files, key, alphabet)
    
 if (len(args) >= 1 and args[0] == "decrypt"):
-    check_key(key, rightkey, 3, alphabet)
+    if ("-attempts" in args and len(args) >= args.index("-attempts") + 1 and args[0] == "decrypt"):
+         attempts = int(args[args.index("-attempts") + 1])
+    else: 
+        attempts = 3
+    check_key(key, rightkey, attempts, alphabet)
 elif (len(args) >= 1 and args[0] == "-key"):
      print(rightkey)
