@@ -1,4 +1,4 @@
-"""dev release beta 9.6"""
+#dev release beta 9.6
 import os
 import random
 
