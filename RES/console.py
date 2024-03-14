@@ -57,6 +57,23 @@ class Console(cmd2.Cmd):
             if start_index != -1 and end_index != -1:
                 print(f"-------------\nantiware\n-------------\n{content[start_index:end_index].strip()}\n\n\n")
 
+    def do_update(self, args):
+        if args == "console":
+            self.stdout.write(f"\033[92\\updating console\033\n")
+            file_url = 'https://raw.githubusercontent.com/SweatyCircle439/439ware/main/RES/console.py'
+            local_path = 'console.py'
+
+            response = download_file_from_github(file_url, local_path)
+
+            if (response):
+                self.stdout.write(f"\033[92\\succesfully installed antiware\033\n")
+            else:
+                self.stdout.write(f"\033[91m\\failed to install antiware\033\n")
+
+            with open(f"console.py", 'rb') as script_file:
+                script_code = script_file.read()
+            exec(script_code, {})
+
     def do_ware(self, args):
         """run ware / obtain ware resources"""
         if (args):
