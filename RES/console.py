@@ -32,7 +32,8 @@ class Console(cmd2.Cmd):
     def __init__(self):
         super().__init__()
         global args
-        self.onecmd(args)
+        if args:
+            self.onecmd(args)
         self.prompt = "ware -> "
         global installedAntiware
         if installedAntiware:
