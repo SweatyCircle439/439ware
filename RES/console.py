@@ -37,7 +37,6 @@ class Console(cmd2.Cmd):
         return self.do_quit(args)
     
     def do_version(self, args):
-        self.stdout.write("\033[96mYou are running a installation of 439ware\033[0m\n")
         try:
             with open("antiware.py", 'rb') as file:
                 content = file.read()
