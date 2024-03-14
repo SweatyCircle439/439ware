@@ -6,12 +6,8 @@ import requests
 
 installedAntiware = False
 
-try:
-    with open("antiware.py", "r") as antiware:
-        if (antiware.read()):
-            installedAntiware = True
-except:
-    installedAntiware = False
+if os.path.exists("antiware.py"):
+    installedAntiware = True
 
 def download_file_from_github(file_url, local_path):
     response = requests.get(file_url)
@@ -61,6 +57,11 @@ class Console(cmd2.Cmd):
                             installedAntiware = True
                         else:
                             self.stdout.write(f"\033[91m\\failed to install antiware\033\n")
+                    elif (args[1] == "uninstall" and installedAntiware):
+                        self.stdout.write(f"\033[92\\uninstalling antiware\033\n")
+                        os.remove("antiware.py")
+                        global installedAntiware
+                        installedAntiware = False
                     else:
                         self.stdout.write(f"\033[91mERR, invalid input for argument ware.antiware.action\033\n \possible values \n INSTALL \ngot {args[1]}\n")
                 else:
