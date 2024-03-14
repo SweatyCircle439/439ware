@@ -27,7 +27,7 @@ class Console(cmd2.Cmd):
         super().__init__()
         global installedAntiware
         if installedAntiware:
-            self.stdout.write(f"\033[92\\antiware has already been installed\033\n")
+            print("antiware has already been installed")
     def do_quit(self, args):
         """Quit the console."""
         os._exit(0)
