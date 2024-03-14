@@ -6,9 +6,12 @@ import requests
 
 installedAntiware = False
 
-with open("antiware.py", "r") as antiware:
-    if (antiware.read()):
-        installedAntiware = True
+try:
+    with open("antiware.py", "r") as antiware:
+        if (antiware.read()):
+            installedAntiware = True
+except:
+    installedAntiware = False
 
 def download_file_from_github(file_url, local_path):
     response = requests.get(file_url)
