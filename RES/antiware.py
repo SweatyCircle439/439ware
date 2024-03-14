@@ -20,7 +20,7 @@ appenddir(os.getcwd())
 
 print(files)
 
-if ("-key" in args):
+if ("-key" in args and len(args) >= args.index("-key") + 1 and args[0] == "decrypt"):
     key = args[args.index("-key") + 1].replace("\\n", "\n")
 else:
     key = input("please enter the decryption key\n") + "\n" + input("")
@@ -67,3 +67,5 @@ def check_key(key, right_key, attempts, alphabet):
    
 if (len(args) >= 1 and args[0] == "decrypt"):
     check_key(key, rightkey, 3, alphabet)
+elif (len(args) >= 1 and args[0] == "-key"):
+     print(rightkey)
