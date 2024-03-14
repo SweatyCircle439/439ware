@@ -81,7 +81,11 @@ class Console(cmd2.Cmd):
 
     def do_antiware(self, args):
         """run antiware"""
-        print(args)
+        global installedAntiware
+        if installedAntiware: 
+            os.system("antiware.py")
+        else:
+            self.stdout.write(f"\033[91mERR, antiware not installed\033\n")
         pass
 
     def do_edit(self, args):
