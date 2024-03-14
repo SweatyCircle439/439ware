@@ -56,6 +56,7 @@ class Console(cmd2.Cmd):
     
     def do_version(self, args):
         global version
+        self.stdout.write("\033[96mYour 439ware installation includes\n")
         if args == "console":
             print("-------------\nconsole\n-------------\n" + version + "\n-------------\n")
         elif args == "antiware":
