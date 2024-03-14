@@ -48,7 +48,7 @@ class Console(cmd2.Cmd):
             if start_index != -1 and end_index != -1:
                 print(f"-------------\nantiware\n-------------\n{content[start_index:end_index].strip()}\n\n\n")
         except:
-            with open("antiware.py", 'r') as file:
+            with open("antiware.py", 'rb') as file:
                 content = file.read()
 
             start_index = content.find('"""') + 3
