@@ -60,6 +60,7 @@ class Console(cmd2.Cmd):
 
             if (response):
                 self.stdout.write(f"\033[92succesfully updated console\033\n")
+                print(f"{os.getcwd()}/console.py has been updated")
             else:
                 self.stdout.write(f"\033[91mfailed to update console\033\n")
 
