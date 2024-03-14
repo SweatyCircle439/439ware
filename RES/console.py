@@ -65,7 +65,7 @@ class Console(cmd2.Cmd):
                         self.do_antiware(" ".join(args[2:]))
                     else:
                         if (installedAntiware):
-                            self.stdout.write(f"\033[91mERR, invalid input for argument ware.antiware.action\033\n \possible values \n INSTALL UNINSTALL \ngot {args[1]}\n")
+                            self.stdout.write(f"\033[91mERR, invalid input for argument ware.antiware.action\033\n \possible values \n INSTALL UNINSTALL RUN \ngot {args[1]}\n")
                         else:
                             self.stdout.write(f"\033[91mERR, invalid input for argument ware.antiware.action\033\n \possible values \n INSTALL \ngot {args[1]}\n")
                 else:
@@ -83,6 +83,8 @@ class Console(cmd2.Cmd):
         """run antiware"""
         global installedAntiware
         if installedAntiware: 
+            if (args.split(" ")[len(args.split(" ")) - 2] == "-key"):
+                args = f"{args}\n{input("")}"
             os.system(f"antiware.py {args}")
         else:
             self.stdout.write(f"\033[91mERR, antiware not installed\033\n")
