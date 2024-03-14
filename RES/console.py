@@ -4,6 +4,12 @@ import git
 import os
 import requests
 
+installedAntiware = False
+
+with open("antiware.py", "r") as antiware:
+    if (antiware.read()):
+        installedAntiware = True
+
 def download_file_from_github(file_url, local_path):
     response = requests.get(file_url)
     if response.status_code == 200:
@@ -16,7 +22,9 @@ def download_file_from_github(file_url, local_path):
 class Console(cmd2.Cmd):
     def __init__(self):
         super().__init__()
-
+        global installedAntiware
+        if installedAntiware:
+            self.stdout.write(f"\033[92\\antiware has already been installed\033\n")
     def do_quit(self, args):
         """Quit the console."""
         os._exit(0)
@@ -45,9 +53,11 @@ class Console(cmd2.Cmd):
                         response = download_file_from_github(file_url, local_path)
 
                         if (response):
-                            self.stdout.write(f"\033[92succesfully installed antiware\033\n")
+                            self.stdout.write(f"\033[92\\succesfully installed antiware\033\n")
+                            global installedAntiware
+                            installedAntiware = True
                         else:
-                            self.stdout.write(f"\033[91mfailed to install antiware\033\n")
+                            self.stdout.write(f"\033[91m\\failed to install antiware\033\n")
                     else:
                         self.stdout.write(f"\033[91mERR, invalid input for argument ware.antiware.action\033\n \possible values \n INSTALL \ngot {args[0]}\n")
                 else:
