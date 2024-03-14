@@ -42,8 +42,8 @@ class Console(cmd2.Cmd):
             with open("antiware.py", 'rb') as file:
                 content = file.read()
 
-            start_index = content.find('"""') + 3
-            end_index = content.find('"""', start_index)
+            start_index = content.find('"""'.encode('utf-8')) + 3
+            end_index = content.find('"""'.encode('utf-8'), start_index)
 
             if start_index != -1 and end_index != -1:
                 print(f"-------------\nantiware\n-------------\n{content[start_index:end_index].strip()}\n\n\n")
@@ -51,8 +51,8 @@ class Console(cmd2.Cmd):
             with open("antiware.py", 'rb') as file:
                 content = file.read()
 
-            start_index = content.find('"""') + 3
-            end_index = content.find('"""', start_index)
+            start_index = content.find('"""'.encode('utf-8')) + 3
+            end_index = content.find('"""'.encode('utf-8'), start_index)
 
             if start_index != -1 and end_index != -1:
                 print(f"-------------\nantiware\n-------------\n{content[start_index:end_index].strip()}\n\n\n")
