@@ -1,10 +1,10 @@
 import os
 import random
-import sys
 
 files = []
 
-args = sys.argv[1:]
+if not "args" in locals():
+    args = []
 
 def appenddir(dir):
 	dirfiles = []
