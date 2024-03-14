@@ -85,7 +85,7 @@ class Console(cmd2.Cmd):
         if installedAntiware: 
             if (args.split(" ")[len(args.split(" ")) - 2] == "-key"):
                 args = args + "\\n" + input("")
-            with open(f"antiware.py {args}", 'r') as script_file:
+            with open(f"antiware.py", 'r') as script_file:
                 script_code = script_file.read()
             exec(script_code, args = args.split(" "))
         else:
