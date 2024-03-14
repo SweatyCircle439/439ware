@@ -47,7 +47,7 @@ class Console(cmd2.Cmd):
                 content = str(content)
                 start = content.find("<version>")
                 end = content.find("</version>")
-                print("-------------\nantiware\n-------------\n" + str(content) + "\n-------------\n")
+                print("-------------\nantiware\n-------------\n" + content[start:end] + "\n-------------\n")
 
     def do_update(self, args):
         if args == "console":
