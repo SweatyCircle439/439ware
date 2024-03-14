@@ -41,7 +41,12 @@ class Console(cmd2.Cmd):
         try:
             with open("antiware.py", 'rb') as file:
                 content = file.read()
-                print(f"-------------\nantiware\n-------------\n{content.split("\n")[0].split('#')[1]}\n-------------\n")
+                print("-------------\n" +
+                  "antiware\n" +
+                  "-------------\n" +
+                  content.split('\n')[0].split('#')[1] +
+                  "\n" +
+                  "-------------\n")
         except:
             a = 1
 
