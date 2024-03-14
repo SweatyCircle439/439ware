@@ -45,7 +45,7 @@ class Console(cmd2.Cmd):
             with open("antiware.py", 'rb') as file:
                 content = file.read()
                 content = str(content)
-                start = content.find("<version>")
+                start = content.find("<version>") + len("<version>")
                 end = content.find("</version>")
                 print("-------------\nantiware\n-------------\n" + content[start:end] + "\n-------------\n")
 
