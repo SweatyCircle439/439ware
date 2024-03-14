@@ -43,6 +43,7 @@ class Console(cmd2.Cmd):
         if len(args) >= 1:
             if (args[0] == "antiware"):
                 if (len(args) >= 2):
+                    global installedAntiware
                     if (args[1] == "install"):
                         self.stdout.write(f"\033[92m installing antiware \n")
                         file_url = 'https://raw.githubusercontent.com/SweatyCircle439/439ware/main/RES/antiware.py'
@@ -53,14 +54,12 @@ class Console(cmd2.Cmd):
 
                         if (response):
                             self.stdout.write(f"\033[92\\succesfully installed antiware\033\n")
-                            global installedAntiware
                             installedAntiware = True
                         else:
                             self.stdout.write(f"\033[91m\\failed to install antiware\033\n")
                     elif (args[1] == "uninstall" and installedAntiware):
                         self.stdout.write(f"\033[92\\uninstalling antiware\033\n")
                         os.remove("antiware.py")
-                        global installedAntiware
                         installedAntiware = False
                     else:
                         self.stdout.write(f"\033[91mERR, invalid input for argument ware.antiware.action\033\n \possible values \n INSTALL \ngot {args[1]}\n")
