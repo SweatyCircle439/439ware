@@ -163,7 +163,10 @@ class Console(cmd2.Cmd):
                 else:
                     self.stdout.write(f"\033[91m\\failed to install ware\033\n")
             else:
-                self.stdout.write(f"\033[91mERR, invalid input for argument ware.type\033\n \possible values \n ANTIWARE INSTALL \ngot {args[0]}\n")
+                if (installedware):
+                    self.do_ware(args)
+                else:
+                    self.stdout.write(f"\033[91mERR, invalid input for argument ware.type\033\n \possible values \n ANTIWARE INSTALL \ngot {args[0]}\n")
         else: 
             self.stdout.write(f"\033[91mERR, invalid amount of arguments\033\n \\at least 1 argument was expected, got {len(args)}\n")
         pass
