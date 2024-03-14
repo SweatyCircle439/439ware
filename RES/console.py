@@ -81,6 +81,7 @@ class Console(cmd2.Cmd):
 
     def do_antiware(self, args):
         """run antiware"""
+        print(args)
         pass
 
     def do_edit(self, args):
