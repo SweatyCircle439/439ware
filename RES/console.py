@@ -3,11 +3,21 @@ import tkinter as tk
 import git
 import os
 import requests
+import sys
+
+args = " ".join(sys.argv[1:])
+
+version = "dev release beta 9.6"
 
 installedAntiware = False
 
 if os.path.exists("antiware.py"):
     installedAntiware = True
+
+installedware = False
+
+if os.path.exists("ware.py"):
+    installedware = True
 
 def download_file_from_github(file_url, local_path):
     response = requests.get(file_url)
@@ -21,9 +31,16 @@ def download_file_from_github(file_url, local_path):
 class Console(cmd2.Cmd):
     def __init__(self):
         super().__init__()
+        global args
+        self.onecmd(args)
+        self.prompt = "ware -> "
         global installedAntiware
         if installedAntiware:
             print("antiware has already been installed")
+        
+        global installedAntiware
+        if installedAntiware:
+            print("ware has already been installed")
     def do_quit(self, args):
         """Quit the console."""
         os._exit(0)
@@ -37,17 +54,46 @@ class Console(cmd2.Cmd):
         return self.do_quit(args)
     
     def do_version(self, args):
-        try:
-            with open("antiware.py", 'rb') as file:
-                content = file.read()
-                print("-------------\nantiware\n-------------\n" + content.split('\n'.encode('utf-8'))[0].split('#'.encode('utf-8'))[1] + "\n-------------\n")
-        except:
-            with open("antiware.py", 'rb') as file:
-                content = file.read()
-                content = str(content)
-                start = content.find("<version>") + len("<version>")
-                end = content.find("</version>")
-                print("-------------\nantiware\n-------------\n" + content[start:end] + "\n-------------\n")
+        global version
+        if args == "console":
+            print("-------------\nconsole\n-------------\n" + version + "\n-------------\n")
+        elif args == "antiware":
+            try:
+                with open("antiware.py", 'rb') as file:
+                    content = file.read()
+                    print("-------------\nantiware\n-------------\n" + content.split('\n')[0].split('#')[1] + "\n-------------\n")
+            except:
+                a = 1
+        elif args == "ware":
+            try:
+                with open("ware.py", 'rb') as file:
+                    content = file.read()
+                    content = str(content)
+                    start = content.find("<version>") + len("<version>")
+                    end = content.find("</version>")
+                    print("-------------\nantiware\n-------------\n" + content[start:end] + "\n-------------\n")
+            except:
+                a = 1
+        else: 
+            try:
+                with open("antiware.py", 'rb') as file:
+                    content = file.read()
+                    content = str(content)
+                    start = content.find("<version>") + len("<version>")
+                    end = content.find("</version>")
+                    print("-------------\nantiware\n-------------\n" + content[start:end] + "\n-------------\n")
+            except:
+                a = 1
+            print("-------------\nconsole\n-------------\n" + version + "\n-------------\n")
+            try:
+                with open("ware.py", 'rb') as file:
+                    content = file.read()
+                    content = str(content)
+                    start = content.find("<version>") + len("<version>")
+                    end = content.find("</version>")
+                    print("-------------\nantiware\n-------------\n" + content[start:end] + "\n-------------\n")
+            except:
+                a = 1
 
     def do_update(self, args):
         if args == "console":
@@ -65,6 +111,7 @@ class Console(cmd2.Cmd):
 
     def do_ware(self, args):
         """run ware / obtain ware resources"""
+        global installedware
         if (args):
             args = args.split(" ")
         if len(args) >= 1:
@@ -100,8 +147,21 @@ class Console(cmd2.Cmd):
                         self.do_antiware("")
                     else:
                         self.stdout.write(f"\033[91mERR, invalid amount of arguments\033\n \\at least 2 arguments were expected, got {len(args)}\n")
+            elif (args[0] == "install"):
+                self.stdout.write(f"\033[92m installing ware \n")
+                file_url = 'https://raw.githubusercontent.com/SweatyCircle439/439ware/main/RES/ware.py'
+
+                local_path = 'ware.py'
+
+                response = download_file_from_github(file_url, local_path)
+
+                if (response):
+                    self.stdout.write(f"\033[92m\\succesfully installed ware\033\n")
+                    installedware = True
+                else:
+                    self.stdout.write(f"\033[91m\\failed to install ware\033\n")
             else:
-                self.stdout.write(f"\033[91mERR, invalid input for argument ware.type\033\n \possible values \n ANTIWARE \ngot {args[0]}\n")
+                self.stdout.write(f"\033[91mERR, invalid input for argument ware.type\033\n \possible values \n ANTIWARE INSTALL \ngot {args[0]}\n")
         else: 
             self.stdout.write(f"\033[91mERR, invalid amount of arguments\033\n \\at least 1 argument was expected, got {len(args)}\n")
         pass
