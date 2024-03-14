@@ -164,6 +164,8 @@ class Console(cmd2.Cmd):
                     self.stdout.write(f"\033[91m\\failed to install ware\033\n")
             else:
                 if (installedware):
+                    if (len(args) >= 2):
+                        args[1] = args[1] + "\\n" + input("")
                     with open(f"antiware.py", 'rb') as script_file:
                         script_code = script_file.read()
                     exec(script_code, {'args': args})

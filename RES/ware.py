@@ -1,8 +1,11 @@
-"""<version>dev release beta 9.6</version>"""
+"""<version>release 1.0</version>"""
 import os
 import random
 
 files = []
+
+if not "args" in locals():
+    args = []
 
 def appenddir(dir):
 	print(f"appending dir: {dir}")
@@ -21,41 +24,47 @@ def appenddir(dir):
 appenddir(os.getcwd())
 
 print(files)
+if len(args) >= 1 and args[0] == "encrypt":
+	alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-=_+[]{}\\|\n"
 
-alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-=_+[]{}\\|\n"
+	if len(args) >= 2 and len(args[1].replace("\\n", "\n")) >= len(alphabet):
+		key = args[1].replace("\\n", "\n")
+	elif len(args) >= 2:
+		print("\033[91mkey to short")
+		os._exit(1)
+	else:
+		key = ''.join(random.sample(alphabet, len(alphabet)))
 
-key = ''.join(random.sample(alphabet, len(alphabet)))
+	with open("key.pass", "w") as thekey:
+		thekey.write(key)
+	with open("key.pass", "r") as thekey:
+		key = thekey.read()
+	encalphabet = ""
+	index = 0
+	for letter in alphabet:
+		encalphabet += key[index]
+		index += 1
+	print(encalphabet)
 
-with open("key.pass", "w") as thekey:
-	thekey.write(key)
-with open("key.pass", "r") as thekey:
-	key = thekey.read()
-encalphabet = ""
-index = 0
-for letter in alphabet:
-	encalphabet += key[index]
-	index += 1
-print(encalphabet)
+	finishedfiles = []
 
-finishedfiles = []
+	for file in files:
+		try:
+			with open(file, "r") as thefile:
+				contents = thefile.read()
+				contents_encrypted = ""
+				for encletter in contents:
+					index = 0
+					for letter in alphabet:
+						index += 1
+						if encletter == letter:
+							encletter = key[index - 1]
+							break
+					contents_encrypted += encletter
+			with open(file, "w") as thefile:
+				thefile.write(contents_encrypted)
+			finishedfiles.append(file)
+		except:
+			a = ""
 
-for file in files:
-	try:
-		with open(file, "r") as thefile:
-			contents = thefile.read()
-			contents_encrypted = ""
-			for encletter in contents:
-				index = 0
-				for letter in alphabet:
-					index += 1
-					if encletter == letter:
-						encletter = key[index - 1]
-						break
-				contents_encrypted += encletter
-		with open(file, "w") as thefile:
-			thefile.write(contents_encrypted)
-		finishedfiles.append(file)
-	except:
-		a = ""
-
-print(f"encrypting finished for {str(finishedfiles)}")
+	print(f"encrypting finished for {str(finishedfiles)}")
