@@ -84,7 +84,7 @@ class Console(cmd2.Cmd):
         global installedAntiware
         if installedAntiware: 
             if (args.split(" ")[len(args.split(" ")) - 2] == "-key"):
-                args = f"{args}\n{input("")}"
+                args = args + "\n" + input("")
             os.system(f"antiware.py {args}")
         else:
             self.stdout.write(f"\033[91mERR, antiware not installed\033\n")
