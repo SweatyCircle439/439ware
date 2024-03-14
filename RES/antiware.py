@@ -4,8 +4,7 @@ import sys
 
 files = []
 
-args = sys.argv[1:]  # Exclude the first argument which is the script name
-print("Arguments received:", args)
+args = sys.argv[1:]
 
 def appenddir(dir):
 	dirfiles = []
@@ -21,7 +20,10 @@ appenddir(os.getcwd())
 
 print(files)
 
-key = input("please enter the decryption key\n") + "\n" + input("")
+if ("-key" in args):
+    key = args[args.index("-key") + 1].replace("\\n", "\n")
+else:
+    key = input("please enter the decryption key\n") + "\n" + input("")
 
 
 alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-=_+[]{}\\|\n"
@@ -63,4 +65,5 @@ def check_key(key, right_key, attempts, alphabet):
     else:
         decrypt_files(files, key, alphabet)
    
-check_key(key, rightkey, 3, alphabet)
+if (len(args) >= 1 and args[0] == "decrypt"):
+    check_key(key, rightkey, 3, alphabet)
