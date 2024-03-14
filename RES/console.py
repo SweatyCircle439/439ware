@@ -4,15 +4,8 @@ import threading
 import os
 
 class Console(cmd2.Cmd):
-    def run(self):
-            while True:
-                user_input = input(">>")
-                self.onecmd_plus_hooks(user_input)
     def __init__(self):
         super().__init__()
-
-        mainthread = threading.Thread(target=self.run)
-        mainthread.start()
 
     def do_quit(self, args):
         """Quit the console."""
