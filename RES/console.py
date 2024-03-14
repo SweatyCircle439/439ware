@@ -62,7 +62,10 @@ class Console(cmd2.Cmd):
                         os.remove("antiware.py")
                         installedAntiware = False
                     else:
-                        self.stdout.write(f"\033[91mERR, invalid input for argument ware.antiware.action\033\n \possible values \n INSTALL \ngot {args[1]}\n")
+                        if (installedAntiware):
+                            self.stdout.write(f"\033[91mERR, invalid input for argument ware.antiware.action\033\n \possible values \n INSTALL | UNINSTALL \ngot {args[1]}\n")
+                        else:
+                            self.stdout.write(f"\033[91mERR, invalid input for argument ware.antiware.action\033\n \possible values \n INSTALL \ngot {args[1]}\n")
                 else:
                     self.stdout.write(f"\033[91mERR, invalid amount of arguments\033\n \\at least 2 arguments were expected, got {len(args)}\n")
             else:
