@@ -44,7 +44,7 @@ class Console(cmd2.Cmd):
         except:
             with open("antiware.py", 'rb') as file:
                 content = file.read()
-                print("-------------\nantiware\n-------------\n" + content.split('\n'.encode('utf-8'))[0].split('#'.encode('utf-8'))[1] + "\n-------------\n")
+                print("-------------\nantiware\n-------------\n" + content.split('\n'.encode('utf-8')[0].split('#'.encode('utf-8'))[1] + "\n-------------\n")
 
     def do_update(self, args):
         if args == "console":
