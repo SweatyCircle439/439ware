@@ -38,8 +38,8 @@ class Console(cmd2.Cmd):
         if installedAntiware:
             print("antiware has already been installed")
         
-        global installedAntiware
-        if installedAntiware:
+        global installedware
+        if installedware:
             print("ware has already been installed")
     def do_quit(self, args):
         """Quit the console."""
