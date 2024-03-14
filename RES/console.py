@@ -48,17 +48,17 @@ class Console(cmd2.Cmd):
 
     def do_update(self, args):
         if args == "console":
-            self.stdout.write(f"\033[92m\\updating console\033\n")
+            self.stdout.write(f"\033[92m{args} has been updated\033[0m\n")
             file_url = 'https://raw.githubusercontent.com/SweatyCircle439/439ware/main/RES/console.py'
             local_path = 'console.py'
 
             response = download_file_from_github(file_url, local_path)
 
-            if (response):
-                self.stdout.write(f"\033[92succesfully updated console\033\n")
+            if response:
+                self.stdout.write(f"\033[92msuccessfully updated {args}\033[0m\n")
                 print(f"{os.getcwd()}/console.py has been updated")
             else:
-                self.stdout.write(f"\033[91mfailed to update console\033\n")
+                self.stdout.write(f"\033[91mfailed to update {args}\033[0m\n")
 
     def do_ware(self, args):
         """run ware / obtain ware resources"""
