@@ -59,7 +59,7 @@ class Console(cmd2.Cmd):
             response = download_file_from_github(file_url, local_path)
 
             if (response):
-                self.stdout.write(f"\033[92msuccesfully updated console\033\n")
+                self.stdout.write(f"\033[92succesfully updated console\033\n")
             else:
                 self.stdout.write(f"\033[91mfailed to update console\033\n")
 
