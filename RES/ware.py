@@ -32,7 +32,7 @@ def encrypt(args):
 		lettershad = []
 		for k in key:
 			if k in lettershad:
-				print("\033[91mkey cant have duplicate letters")
+				print("\033[91mkey cant have duplicate letters" + k)
 				return
 			else:
 				lettershad.append(k)
