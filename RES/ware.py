@@ -27,7 +27,7 @@ print(files)
 def encrypt(args):
 	alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-=_+[]{}\\|\n"
 
-	if len(args) >= 2 and len(args[1].replace("\\n", "\n")) >= len(alphabet):
+	if len(args) >= 2 and len(args[1].replace("\\n", "\n")) >= len(alphabet) - 1:
 		key = args[1].replace("\\n", "\n")
 		lettershad = []
 		for k in key:
