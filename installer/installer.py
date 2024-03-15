@@ -28,7 +28,10 @@ def display_md(content):
         webbrowser.open('temp.html')
         os.remove('temp.html')
 
-
+display_md(
+    read_file_from_github(
+        "https://raw.githubusercontent.com/SweatyCircle439/439ware/main/installer/install.md"
+))
 
 customtkinter.set_ctk_parent_class(tkinter.Tk)
 
