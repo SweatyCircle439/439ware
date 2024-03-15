@@ -26,7 +26,6 @@ def display_md(content):
         with open('temp.html', 'w', encoding='utf-8') as temp_file:
             temp_file.write(html_content)
         webbrowser.open('temp.html')
-        os.remove('temp.html')
 
 display_md(
     read_file_from_github(
