@@ -1,4 +1,4 @@
-"""<version>release 1.0</version>"""
+"""<version>release 1.1</version>"""
 import os
 import random
 
@@ -27,7 +27,7 @@ print(files)
 def encrypt(args):
 	alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-=_+[]{}\\|\n"
 
-	if len(args) >= 2 and len(args[1].replace("\\n", "\n")) >= len(alphabet) - 1:
+	if len(args) >= 2 and len(args[1].replace("\\n", "\n")) >= len(alphabet):
 		key = args[1].replace("\\n", "\n")
 		lettershad = []
 		for k in key:

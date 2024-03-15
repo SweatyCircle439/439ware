@@ -1,4 +1,4 @@
-"""<version>release 1.0</version>"""
+"""<version>release 1.1</version>"""
 import os
 import random
 
@@ -74,5 +74,5 @@ if (len(args) >= 1 and args[0] == "decrypt"):
     else: 
         attempts = 3
     check_key(key, rightkey, attempts, alphabet)
-elif (len(args) >= 1 and args[0] == "-key"):
+elif (len(args) >= 1 and args[0] == "key"):
      print(rightkey)
