@@ -24,14 +24,21 @@ def appenddir(dir):
 appenddir(os.getcwd())
 
 print(files)
-if len(args) >= 1 and args[0] == "encrypt":
+def encrypt(args):
 	alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-=_+[]{}\\|\n"
 
 	if len(args) >= 2 and len(args[1].replace("\\n", "\n")) >= len(alphabet):
 		key = args[1].replace("\\n", "\n")
+		lettershad = []
+		for k in key:
+			if k in lettershad:
+				print("\033[91mkey cant have duplicate letters")
+				return
+			else:
+				lettershad.append(k)
 	elif len(args) >= 2:
 		print("\033[91mkey to short")
-		os._exit(1)
+		return
 	else:
 		key = ''.join(random.sample(alphabet, len(alphabet)))
 
@@ -68,3 +75,5 @@ if len(args) >= 1 and args[0] == "encrypt":
 			a = ""
 
 	print(f"encrypting finished for {str(finishedfiles)}")
+if len(args) >= 1 and args[0] == "encrypt":
+	encrypt(args)
