@@ -26,7 +26,7 @@ def create_shortcut(source_path, target_folder = os.path.join(os.environ["APPDAT
         Path=os.path.join(target_folder, "ware.lnk"),
         Target=source_path,
         Description="ware",
-        icon=(os.path.join(source_path.split("\\")[-1], "logo.ico")),
+        Icon=(os.path.join(source_path.replace(source_path.split("\\")[-1], ""), "logo.ico"), 0),
     )
 
 def remove_shortcut(source_path, target_folder = os.path.join(os.environ["APPDATA"], "Microsoft\\Windows\\Start Menu\\Programs")):
